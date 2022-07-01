@@ -89,7 +89,4 @@ def dakarun(theID,thePassw):
 
 
 
-dakarun('2019051619','Lxygw7f.qsgct1s')
-dakarun('2019054253','lyv.962464')
-dakarun('2019052522','WDDlzx603317.')
 
