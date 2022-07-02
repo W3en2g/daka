@@ -12,5 +12,9 @@ def checkResult(user):
 
     difference = cv2.subtract(expectedAns, ans)
     result = not np.any(difference)
-
+    if result:
+        print(user," is done")
+    else:
+        print("has problem for ", user, " try again now")
+    print("-----------------------------------------")
     return result
