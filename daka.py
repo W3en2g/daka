@@ -9,21 +9,8 @@ import requests
 import cv2
 from recoPic import getDistance 
 
-# https://blog.csdn.net/qq_36078992/article/details/110326518
 def dakarun(theID,thePassw):
-    # 加上参数，禁止 chromedriver 日志写屏
-    # options = webdriver.ChromeOptions()
-    # options.add_experimental_option('useAutomationExtension', False)
-    # options.add_experimental_option('excludeSwitches', ['enable-logging'])
-    # options.add_experimental_option('excludeSwitches', ['enable-automation'])
-    # options.add_argument('--headless')
-    # options.add_argument('--disable-gpu')
-    # # options.add_argument("window-size=1024,768")
-    # options.add_argument("--no-sandbox")
-
-    # options.add_argument("--disable-blink-features")
-    # options.add_argument("--disable-blink-features=AutomationControlled")
-    # wd = webdriver.Chrome(r'/home/daka/chromedriver',options=options)
+    print("run for ",theID)
 
     options = uc.ChromeOptions()
     options.headless=True
@@ -55,26 +42,17 @@ def dakarun(theID,thePassw):
         f.close()
         sleep(3)
         distance = getDistance(background_image_path)-20
-        print(distance)
+        print("The distance is ",distance)
         sleep(1)
-        # slider = wd.find_element(By.CLASS_NAME, 'yidun_slider')
         ActionChains(wd).drag_and_drop_by_offset(slider,distance,0).perform()
         sleep(1)
         wd.find_element(By.XPATH,'/html/body/app-root/app-login/div[2]/div[2]/form/div[5]/div/button').click()
 
-        #random temperture
 
         try:
-            # wd.find_element(By.ID, 'cjtw').send_keys("36.2")
-            # wd.find_element(By.ID, 'wujtw').send_keys("36.3")
-            # wd.find_element(By.ID, 'wajtw').send_keys("36.3")
-            # wd.find_element(By.ID, 'twyjcrq').send_keys(Keys.ENTER)
-            # wd.find_element(By.ID, 'twejcrq').send_keys(Keys.ENTER)
-            # wd.find_element(By.ID, 'twsjcrq').send_keys(Keys.ENTER)
             wd.find_element(By.ID,'10000').click()
             sleep(1)
             wd.find_element(By.ID,'tj').click()
-            # wd.find_element(By.XPATH,'/html/body/app-root/app-index/div/div[1]/app-home/section/section/div/div/div/div/div/div[44]/button').click()
 
         except:
             pass
@@ -82,8 +60,12 @@ def dakarun(theID,thePassw):
             sleep(2)
             today = datetime.date.today()
             today = str(today)
-            resultimg = "/home/daka/log/"+theID+"/"+today+'.png'
-            wd.save_screenshot(resultimg)
+            result_img_path = "/home/daka/log/"+theID+"/"+today+'.png'
+            result_image_url = wd.find_element(By.XPATH,'/html/body/app-root/app-index/div/div[1]/app-complete/section/section/div/div/div/div/div/div[1]/img').get_attribute('src')
+            result_image = requests.get(result_image_url).content
+            with open(result_img_path, mode='wb') as f:
+                f.write(result_image)
+                f.close()
             wd.close() 
             pass
 
