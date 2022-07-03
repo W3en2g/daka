@@ -53,10 +53,10 @@ def getDistance(path):
 
         if ((l+r)//2)!=159:
             distance=((l+r)//2)
-            for w in range(0,320):
-                for h in range(0,160):
-                    if w == (l+r)//2:
-                        res[h,w] = [255,255,255]
+            # for w in range(0,320):
+            #     for h in range(0,160):
+            #         if w == (l+r)//2:
+            #             res[h,w] = [255,255,255]
             # cv2.imshow("",res)
             # cv2.waitKey()
 

@@ -67,6 +67,7 @@ def dakarun(theID,thePassw):
                 f.write(result_image)
                 f.close()
             wd.close() 
+            sleep(3)
             pass
 
 
