@@ -63,7 +63,7 @@ def dakarun(theID,thePassw):
             result_img_path = "/home/daka/log/"+theID+"/"+today+'.png'
             result_image_url = wd.find_element(By.XPATH,'/html/body/app-root/app-index/div/div[1]/app-complete/section/section/div/div/div/div/div/div[1]/img').get_attribute('src')
             result_image = requests.get(result_image_url).content
-            with open(result_img_path, mode='wb') as f:
+            with open(result_img_path, mode='wr') as f:
                 f.write(result_image)
                 f.close()
             wd.close() 

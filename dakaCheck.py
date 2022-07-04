@@ -9,7 +9,7 @@ def checkResult(user):
     today = str(today)
     patha = r"/home/daka/log/"+user+"/"+today+".png"
     ans=cv2.imread(patha)
-
+    print(patha)
     difference = cv2.subtract(expectedAns, ans)
     result = not np.any(difference)
     if result:
