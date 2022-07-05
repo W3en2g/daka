@@ -1,4 +1,4 @@
-log/
+record/
 __pycache__/
 .idea
 main.py

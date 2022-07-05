@@ -8,8 +8,11 @@ import undetected_chromedriver.v2 as uc
 import requests
 import cv2
 from recoPic import getDistance 
-
+import logging
+logging.basicConfig(filename='/home/daka/record/log', level=logging.INFO,format='%(asctime)s %(message)s')
 def dakarun(theID,thePassw):
+    message = "run for "+theID
+    logging.info(message)
     print("run for ",theID)
 
     options = uc.ChromeOptions()
@@ -60,12 +63,15 @@ def dakarun(theID,thePassw):
             sleep(2)
             today = datetime.date.today()
             today = str(today)
-            result_img_path = "/home/daka/log/"+theID+"/"+today+'.png'
-            result_image_url = wd.find_element(By.XPATH,'/html/body/app-root/app-index/div/div[1]/app-complete/section/section/div/div/div/div/div/div[1]/img').get_attribute('src')
-            result_image = requests.get(result_image_url).content
-            with open(result_img_path, mode='wb') as f:
-                f.write(result_image)
-                f.close()
+            result_img_path = "/home/daka/record/"+theID+"/"+today+'.png'
+            try:
+                result_image_url = wd.find_element(By.XPATH,'/html/body/app-root/app-index/div/div[1]/app-complete/section/section/div/div/div/div/div/div[1]/img').get_attribute('src')
+                result_image = requests.get(result_image_url).content
+                with open(result_img_path, mode='wb') as f:
+                    f.write(result_image)
+                    f.close()
+            except:
+                pass
             wd.close() 
             sleep(3)
             pass
