@@ -8,8 +8,9 @@ import undetected_chromedriver.v2 as uc
 import requests
 import cv2
 from recoPic import getDistance 
+from dakaCheck import checkResult
 import logging
-logging.basicConfig(filename='/home/daka/record/log', level=logging.INFO,format='%(asctime)s %(message)s')
+logging.basicConfig(filename='/home/daka/record/log', level=logging.ERROR,format='%(asctime)s %(message)s')
 
 def dakarun(theID,thePassw):
     message = "run for "+theID
@@ -79,11 +80,11 @@ def dakarun(theID,thePassw):
 
 
 def mainrun(userid,password):
-    flag = checkResult(userid)
-    if flag:
+    sucess = checkResult(userid)
+    if sucess:
         return True
-    while(not flag):
+    while(not sucess):
         dakarun(userid,password)
-        flag = checkResult(userid)
+        sucess = checkResult(userid)
     return False
 
