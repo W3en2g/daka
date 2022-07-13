@@ -16,7 +16,6 @@ def checkResult(user):
         result = not np.any(difference)
         if result:
             message = user +" is done"
-            logging.info(message)
             print(user," is done")
         else:
             message = "has problem for ", user, " try again now"
