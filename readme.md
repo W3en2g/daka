@@ -2,21 +2,21 @@
 
 
 
-## Prepare
+# Prepare
 
-#### Clone the code
+#### 1. Clone the code
 
 ```
 git clone git@github.com:Muddypond/daka.git
 ```
 
-#### Configuring the environment
+#### 2. Configuring the environment
 
 ```
 pip install -r requirements.txt
 ```
 
-#### Revised the ID and password in template_main.py and rename it as main.py
+#### 3. Revised the ID and password in template_main.py and rename it as main.py
 
 
 
