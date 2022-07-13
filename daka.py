@@ -10,6 +10,7 @@ import cv2
 from recoPic import getDistance 
 import logging
 logging.basicConfig(filename='/home/daka/record/log', level=logging.INFO,format='%(asctime)s %(message)s')
+
 def dakarun(theID,thePassw):
     message = "run for "+theID
     logging.info(message)
@@ -77,5 +78,12 @@ def dakarun(theID,thePassw):
             pass
 
 
-
+def mainrun(userid,password):
+    flag = checkResult(userid)
+    if flag:
+        return True
+    while(not flag):
+        dakarun(userid,password)
+        flag = checkResult(userid)
+    return False
 
