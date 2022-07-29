@@ -7,7 +7,7 @@
 #### 1. Clone the code
 
 ```
-git clone git@github.com:Muddypond/daka.git
+git clone https://github.com/Muddypond/daka
 ```
 
 #### 2. Configuring the environment
